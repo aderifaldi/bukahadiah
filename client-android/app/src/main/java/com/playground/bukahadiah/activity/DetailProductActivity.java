@@ -234,34 +234,37 @@ public class DetailProductActivity extends BaseActivity {
                 break;
             case R.id.btnConfirmation:
 
-                showLoading();
+                startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+                goToAnimation();
 
-                SimpleDateFormat sdf = new SimpleDateFormat(GlobalVariable.DATE_FORMAT);
-                Calendar calendar = Calendar.getInstance();
-
-                jsonPost = new JsonObject();
-                jsonPost.addProperty("gift_item_id", wishItemId);
-                jsonPost.addProperty("user_id", GlobalVariable.getUserId(getApplicationContext()));
-                jsonPost.addProperty("friend_id", GlobalVariable.getTempFriendId(getApplicationContext()));
-                jsonPost.addProperty("title", GlobalVariable.getNameUser(getApplicationContext()));
-                jsonPost.addProperty("message", "has confirmed to gift you " + productDetail.product.name);
-                jsonPost.addProperty("create_date", sdf.format(calendar.getTime()));
-
-                Call<ModelBase> call = apiServiceBH.AddNotification(jsonPost);
-                call.enqueue(new Callback<ModelBase>() {
-                    @Override
-                    public void onResponse(Call<ModelBase> call, Response<ModelBase> response) {
-                        if (!response.body().isError()){
-                            dismissLoading();
-                            sendNotification();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ModelBase> call, Throwable t) {
-
-                    }
-                });
+//                showLoading();
+//
+//                SimpleDateFormat sdf = new SimpleDateFormat(GlobalVariable.DATE_FORMAT);
+//                Calendar calendar = Calendar.getInstance();
+//
+//                jsonPost = new JsonObject();
+//                jsonPost.addProperty("gift_item_id", wishItemId);
+//                jsonPost.addProperty("user_id", GlobalVariable.getUserId(getApplicationContext()));
+//                jsonPost.addProperty("friend_id", GlobalVariable.getTempFriendId(getApplicationContext()));
+//                jsonPost.addProperty("title", GlobalVariable.getNameUser(getApplicationContext()));
+//                jsonPost.addProperty("message", "has confirmed to gift you " + productDetail.product.name);
+//                jsonPost.addProperty("create_date", sdf.format(calendar.getTime()));
+//
+//                Call<ModelBase> call = apiServiceBH.AddNotification(jsonPost);
+//                call.enqueue(new Callback<ModelBase>() {
+//                    @Override
+//                    public void onResponse(Call<ModelBase> call, Response<ModelBase> response) {
+//                        if (!response.body().isError()){
+//                            dismissLoading();
+//                            sendNotification();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ModelBase> call, Throwable t) {
+//
+//                    }
+//                });
 
                 break;
         }

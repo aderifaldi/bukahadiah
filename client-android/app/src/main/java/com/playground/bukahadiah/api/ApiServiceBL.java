@@ -7,6 +7,7 @@ import com.playground.bukahadiah.model.bukalapak.BLProduct;
 import com.playground.bukahadiah.model.bukalapak.BLProductCategory;
 import com.playground.bukahadiah.model.bukalapak.BLProductDetail;
 import com.playground.bukahadiah.model.bukalapak.BLProductReview;
+import com.playground.bukahadiah.model.bukalapak.BLProvince;
 import com.playground.bukahadiah.model.bukalapak.BLRegister;
 import com.playground.bukahadiah.model.bukalapak.BLUser;
 import com.playground.bukahadiah.model.bukalapak.BLUserProfile;
@@ -42,6 +43,7 @@ public interface ApiServiceBL {
     String PRODUCT_REVIEWS = "products/{id}/reviews.json";
     String USER_REGISTER = "users.json";
     String GET_TRANSACTION = "transactions/{id}.json";
+    String GET_PROVINCE = "address/provinces.json";
 
     //SEND TRANSFER EVIDENCE
     @Headers("Content-Type: application/json")
@@ -79,5 +81,8 @@ public interface ApiServiceBL {
 
     @POST(USER_REGISTER)
     Call<BLRegister> RegisterUser(@Body JsonObject jsonPost);
+
+    @GET(GET_PROVINCE)
+    Call<BLProvince> GetProvince();
 
 }

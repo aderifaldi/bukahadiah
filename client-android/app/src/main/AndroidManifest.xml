@@ -69,7 +69,10 @@
         <activity android:name=".activity.RegisterSuccessActivity" />
         <activity android:name=".activity.SendConfirmationActivity" />
         <activity android:name=".activity.NotificationListActivity" />
-        <activity android:name=".activity.AddPostActivity"
+        <activity
+            android:name=".activity.AddPostActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.PaymentActivity"
             android:windowSoftInputMode="adjustPan"/>
     </application>
 
