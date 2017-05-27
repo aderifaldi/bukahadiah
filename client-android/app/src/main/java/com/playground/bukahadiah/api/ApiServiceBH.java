@@ -46,6 +46,7 @@ public interface ApiServiceBH {
     String ADD_NOTIFICATION = "Notification";
     String GET_NOTIFICATION = "Notification/get/{user_id}";
     String MEMBER_FOLLOW = "Friendship";
+    String GIFTBOX_BY_USER = "giftboxes/{user_id}/get";
 
     @Headers("Content-Type: application/json")
     @POST(GIFTBOX)
@@ -95,7 +96,7 @@ public interface ApiServiceBH {
     Call<BHMemberList> GetListMember(@Path("user_blid") int user_blid);
 
     @GET(GIFTBOX)
-    Call<BHEvent> GetGiftBox();
+    Call<BHEvent> GetGiftBox(@Query("user_id") int user_id);
 
     @GET(GIFTBOX_DETAIL)
     Call<BHEventDetail> GetGiftBoxDetail(@Path("id") int id);
@@ -103,8 +104,8 @@ public interface ApiServiceBH {
     @GET(GIFT_ITEM)
     Call<BHGiftItem> GetGiftItem(@Query("event_id") int event_id);
 
-    @GET(GIFTBOX)
-    Call<BHEvent> GetGiftBoxByUser(@Query("user_id") int user_id);
+    @GET(GIFTBOX_BY_USER)
+    Call<BHEvent> GetGiftBoxByUser(@Path("user_id") int user_id);
 
     @DELETE(DELETE_GIFT)
     Call<ModelBase> DeleteGift(@Path("id") int id);

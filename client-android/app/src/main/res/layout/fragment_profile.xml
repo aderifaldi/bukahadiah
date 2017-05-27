@@ -110,6 +110,7 @@
                     custom:font="@string/light" />
 
                 <RelativeLayout
+                    android:visibility="gone"
                     android:layout_marginTop="@dimen/paddingSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

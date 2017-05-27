@@ -91,6 +91,8 @@ public class MainActivity extends BaseActivity {
         menuTop.setVisibility(View.VISIBLE);
         btnMenuTop.setImageResource(R.drawable.notification);
 
+        AppUtility.logD("Token", "Token BL : " + GlobalVariable.getBukalapakToken(this));
+
     }
 
     @Override

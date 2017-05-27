@@ -104,7 +104,7 @@ public class EventsFragment extends BaseFragment {
     }
 
     private void GetMyEvent() {
-        Call<BHEvent> call = apiServiceBH.GetGiftBox();
+        Call<BHEvent> call = apiServiceBH.GetGiftBox(GlobalVariable.getUserId(getActivity()));
         call.enqueue(new Callback<BHEvent>() {
             @Override
             public void onResponse(Call<BHEvent> call, Response<BHEvent> response) {
