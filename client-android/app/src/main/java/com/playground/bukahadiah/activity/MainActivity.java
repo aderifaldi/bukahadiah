@@ -98,9 +98,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (GlobalVariable.getIsProfileUpdated(getApplicationContext())){
-            UpdateProfilePicture();
-        }
+//        if (GlobalVariable.getIsProfileUpdated(getApplicationContext())){
+//            UpdateProfilePicture();
+//        }
     }
 
     @OnClick({R.id.menuHome, R.id.menuSearch, R.id.menuAdd, R.id.menuHeart, R.id.menuUser})
@@ -260,28 +260,6 @@ public class MainActivity extends BaseActivity {
         isAddPost = false;
 
         search.hideSearchBar();
-    }
-
-    private void UpdateProfilePicture(){
-//        showLoading();
-        jsonPost = new JsonObject();
-        jsonPost.addProperty("user_photo", GlobalVariable.getUserProfileImage(getApplicationContext()));
-
-        Call<ModelBase> call = apiServiceBH.UpdatePhoto(jsonPost, GlobalVariable.getUserId(getApplicationContext()));
-        call.enqueue(new Callback<ModelBase>() {
-            @Override
-            public void onResponse(Call<ModelBase> call, Response<ModelBase> response) {
-//                dismissLoading();
-                if (!response.body().isError()){
-                    AppUtility.logD("UpdateProfile", "Update profile photo success");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ModelBase> call, Throwable t) {
-
-            }
-        });
     }
 
     public void Refresh(){

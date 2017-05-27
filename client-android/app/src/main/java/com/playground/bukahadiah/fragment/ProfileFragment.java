@@ -32,6 +32,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.gson.JsonObject;
 import com.playground.bukahadiah.R;
 import com.playground.bukahadiah.adapter.ProfilePagerAdapter;
 import com.playground.bukahadiah.customui.imageview.CircleImageView;
@@ -39,6 +40,8 @@ import com.playground.bukahadiah.customui.textview.CustomTextView;
 import com.playground.bukahadiah.helper.CopyFile;
 import com.playground.bukahadiah.helper.GlobalVariable;
 import com.playground.bukahadiah.model.bukahadiah.BHUser;
+import com.playground.bukahadiah.model.bukahadiah.ModelBase;
+import com.radyalabs.irfan.util.AppUtility;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -357,6 +360,7 @@ public class ProfileFragment extends BaseFragment {
                 Log.d("TAG", "file path: " + downloadUrl);
 
                 Toast.makeText(getActivity(), "Upload Success", Toast.LENGTH_SHORT).show();
+                UpdateProfilePicture(fileUploadUrlProfile);
 
             }
         });
@@ -384,6 +388,29 @@ public class ProfileFragment extends BaseFragment {
 
             @Override
             public void onFailure(Call<BHUser> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void UpdateProfilePicture(String photoUrl){
+//        showLoading();
+        jsonPost = new JsonObject();
+        jsonPost.addProperty("user_photo", photoUrl);
+
+        Call<ModelBase> call = apiServiceBH.UpdatePhoto(jsonPost, GlobalVariable.getUserId(getActivity()));
+        call.enqueue(new Callback<ModelBase>() {
+            @Override
+            public void onResponse(Call<ModelBase> call, Response<ModelBase> response) {
+                dismissLoading();
+                if (!response.body().isError()){
+                    AppUtility.logD("UpdateProfile", "Update profile photo success");
+                    GetMemberInfo();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ModelBase> call, Throwable t) {
 
             }
         });
