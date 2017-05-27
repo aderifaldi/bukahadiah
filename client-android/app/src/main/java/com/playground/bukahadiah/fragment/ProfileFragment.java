@@ -419,10 +419,10 @@ public class ProfileFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Glide.with(this).
-                load(GlobalVariable.getUserProfileImage(getActivity())).
-                crossFade().
-                into(imageUser);
+//        Glide.with(this).
+//                load(GlobalVariable.getUserProfileImage(getActivity())).
+//                crossFade().
+//                into(imageUser);
 //        GetMemberInfo();
     }
 
