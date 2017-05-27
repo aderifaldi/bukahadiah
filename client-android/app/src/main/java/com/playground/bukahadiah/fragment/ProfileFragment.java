@@ -37,7 +37,7 @@ import com.playground.bukahadiah.R;
 import com.playground.bukahadiah.adapter.ProfilePagerAdapter;
 import com.playground.bukahadiah.customui.imageview.CircleImageView;
 import com.playground.bukahadiah.customui.textview.CustomTextView;
-import com.playground.bukahadiah.helper.CopyFile;
+import com.playground.bukahadiah.helper.image.CopyFile;
 import com.playground.bukahadiah.helper.GlobalVariable;
 import com.playground.bukahadiah.model.bukahadiah.BHUser;
 import com.playground.bukahadiah.model.bukahadiah.ModelBase;

@@ -3,6 +3,7 @@ package com.playground.bukahadiah.helper;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.playground.bukahadiah.helper.security.Unbreakable;
 import com.playground.bukahadiah.model.bukalapak.BLAuthentication;
 
 /**
@@ -26,7 +27,8 @@ public class GlobalVariable {
     private static final String USER_NAME = "userName";
     private static final String USER_EMAIL = "userEmail";
     private static final String USER_PROFILE_IMAGE = "userProfileImage";
-    private static final String TEMP_FRIEND_FCM_TOKEN = "userProfileImage";
+    private static final String TEMP_FRIEND_FCM_TOKEN = "tempFriendFCMToken";
+    private static final String TEMP_FRIEND_ID = "tempFriendId";
 
     public static final int REQUEST_CAMERA_FOR_TAKE_PHOTO = 4;
     public static final int REQUEST_GALERY = 5;
@@ -62,13 +64,25 @@ public class GlobalVariable {
     public static void saveTempFriendFCMToken(Context context, String data) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(GlobalVariable.PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(TEMP_FRIEND_FCM_TOKEN, data);
+        editor.putString(TEMP_FRIEND_FCM_TOKEN, Unbreakable.getEncryptedString(data));
         editor.apply();
     }
 
     public static String getTempFriendFCMToken(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(GlobalVariable.PREF_NAME, Context.MODE_PRIVATE);
-        String data = sharedPreferences.getString(TEMP_FRIEND_FCM_TOKEN, null);
+        return Unbreakable.getDecriyptedString(sharedPreferences.getString(TEMP_FRIEND_FCM_TOKEN, null));
+    }
+
+    public static void saveTempFriendId(Context context, String data) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(GlobalVariable.PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(TEMP_FRIEND_ID, data);
+        editor.apply();
+    }
+
+    public static String getTempFriendId(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(GlobalVariable.PREF_NAME, Context.MODE_PRIVATE);
+        String data = sharedPreferences.getString(TEMP_FRIEND_ID, null);
 
         return data;
     }
@@ -90,13 +104,13 @@ public class GlobalVariable {
     public static void saveFCMToken(Context context, String data){
         SharedPreferences sharedPreferences = context.getSharedPreferences(GlobalVariable.PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(FCM_TOKEN, data);
+        editor.putString(FCM_TOKEN, Unbreakable.getEncryptedString(data));
         editor.apply();
     }
 
     public static String getFCMToken(Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences(GlobalVariable.PREF_NAME, Context.MODE_PRIVATE);
-        return (sharedPreferences.getString(FCM_TOKEN, null));
+        return Unbreakable.getDecriyptedString(sharedPreferences.getString(FCM_TOKEN, null));
     }
 
     public static void saveUserProfileIMage(Context context, String data){
@@ -164,13 +178,13 @@ public class GlobalVariable {
     public static void saveBukalapakToken(Context context, String data){
         SharedPreferences sharedPreferences = context.getSharedPreferences(GlobalVariable.PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(BUKALAPAK_TOKEN, data);
+        editor.putString(BUKALAPAK_TOKEN, Unbreakable.getEncryptedString(data));
         editor.apply();
     }
 
     public static String getBukalapakToken(Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences(GlobalVariable.PREF_NAME, Context.MODE_PRIVATE);
-        return (sharedPreferences.getString(BUKALAPAK_TOKEN, null));
+        return Unbreakable.getDecriyptedString(sharedPreferences.getString(BUKALAPAK_TOKEN, null));
     }
 
     public static void saveIsLogin(Context context, boolean data) {

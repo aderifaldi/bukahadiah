@@ -1,15 +1,12 @@
 package com.playground.bukahadiah.activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -17,10 +14,8 @@ import android.widget.RelativeLayout;
 import com.bumptech.glide.Glide;
 import com.playground.bukahadiah.R;
 import com.playground.bukahadiah.adapter.GiftListAdapter;
-import com.playground.bukahadiah.adapter.MyGiftListAdapter;
 import com.playground.bukahadiah.customui.textview.CustomTextView;
 import com.playground.bukahadiah.helper.GlobalVariable;
-import com.playground.bukahadiah.helper.ImageDownloader;
 import com.playground.bukahadiah.model.bukahadiah.BHEvent;
 import com.playground.bukahadiah.model.bukahadiah.BHEventDetail;
 import com.playground.bukahadiah.model.bukahadiah.BHGiftItem;
@@ -111,26 +106,7 @@ public class EventDetailActivity extends BaseActivity {
                 if (!eventDetail.isError()){
 
                     GlobalVariable.saveTempFriendFCMToken(getApplicationContext(), eventDetail.data.user_fcm_token);
-
-//                    if (eventDetail.data.event_photo != null || eventDetail.data.event_photo != ""){
-//                        ImageDownloader imageDownloader = new ImageDownloader(event.event_photo,
-//                                getApplicationContext(), new ImageDownloader.OnImageFinishDownload() {
-//                            @Override
-//                            public void onFinish(Bitmap bitmap, int returnCode) {
-//                                if (bitmap != null) {
-//                                    eventImage.setImageBitmap(bitmap);
-//                                    eventImage.setVisibility(View.VISIBLE);
-//
-//                                    int layoutHeight = screenSize.x * bitmap.getHeight()/bitmap.getWidth();
-//                                    ViewGroup.LayoutParams params = eventImage.getLayoutParams();
-//                                    params.height = layoutHeight;
-//                                    eventImage.setLayoutParams(params);
-//                                }
-//                            }
-//                        });
-//                        imageDownloader.setSizeOption(screenSize.x, true);
-//                        imageDownloader.execute();
-//                    }
+                    GlobalVariable.saveTempFriendId(getApplicationContext(), eventDetail.data.user_blid);
 
                     Glide.with(getApplicationContext())
                             .load(event.event_photo)

@@ -34,7 +34,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.playground.bukahadiah.R;
 import com.playground.bukahadiah.customui.textview.CustomTextView;
-import com.playground.bukahadiah.helper.CopyFile;
+import com.playground.bukahadiah.helper.image.CopyFile;
 import com.playground.bukahadiah.helper.GlobalVariable;
 import com.playground.bukahadiah.model.bukahadiah.BHGift;
 
@@ -45,7 +45,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

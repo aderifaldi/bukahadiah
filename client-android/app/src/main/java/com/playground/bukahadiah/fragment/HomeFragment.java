@@ -65,6 +65,7 @@ public class HomeFragment extends BaseFragment {
         listEvent.setAdapter(adapter);
         listEvent.setLayoutManager(linearLayoutManager);
 
+        showLoading();
         GetActivity();
 
         refreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -90,6 +91,11 @@ public class HomeFragment extends BaseFragment {
         call.enqueue(new Callback<BHActivity>() {
             @Override
             public void onResponse(Call<BHActivity> call, Response<BHActivity> response) {
+
+                if (loading != null){
+                    dismissLoading();
+                }
+
                 BHActivity apiResponse = response.body();
 
                 if (!apiResponse.isError()) {

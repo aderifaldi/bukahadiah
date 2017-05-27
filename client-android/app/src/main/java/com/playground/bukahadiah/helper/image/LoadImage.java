@@ -1,4 +1,4 @@
-package com.playground.bukahadiah.helper;
+package com.playground.bukahadiah.helper.image;
 
 import java.io.File;
 

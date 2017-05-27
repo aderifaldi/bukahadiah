@@ -103,7 +103,7 @@ public class MainActivity extends BaseActivity {
 //        }
     }
 
-    @OnClick({R.id.menuHome, R.id.menuSearch, R.id.menuAdd, R.id.menuHeart, R.id.menuUser})
+    @OnClick({R.id.menuHome, R.id.menuSearch, R.id.bgBtnAdd, R.id.menuHeart, R.id.menuUser})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.menuHome:
@@ -114,7 +114,7 @@ public class MainActivity extends BaseActivity {
                 menuHeartSelected();
                 body.setCurrentItem(1);
                 break;
-            case R.id.menuAdd:
+            case R.id.bgBtnAdd:
                 startActivity(new Intent(getApplicationContext(), AddPostActivity.class));
                 menuHomeSelected();
                 body.setCurrentItem(0);

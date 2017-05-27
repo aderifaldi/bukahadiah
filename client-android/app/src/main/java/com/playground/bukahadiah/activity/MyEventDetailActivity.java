@@ -1,18 +1,15 @@
 package com.playground.bukahadiah.activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.playground.bukahadiah.R;
 import com.playground.bukahadiah.customui.textview.CustomTextView;
-import com.playground.bukahadiah.helper.ImageDownloader;
 import com.playground.bukahadiah.model.bukahadiah.BHEvent;
 import com.radyalabs.irfan.util.AppUtility;
 

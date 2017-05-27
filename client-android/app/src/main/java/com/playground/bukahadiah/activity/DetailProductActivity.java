@@ -242,6 +242,7 @@ public class DetailProductActivity extends BaseActivity {
                 jsonPost = new JsonObject();
                 jsonPost.addProperty("gift_item_id", wishItemId);
                 jsonPost.addProperty("user_id", GlobalVariable.getUserId(getApplicationContext()));
+                jsonPost.addProperty("friend_id", GlobalVariable.getTempFriendId(getApplicationContext()));
                 jsonPost.addProperty("title", GlobalVariable.getNameUser(getApplicationContext()));
                 jsonPost.addProperty("message", "has confirmed to gift you " + productDetail.product.name);
                 jsonPost.addProperty("create_date", sdf.format(calendar.getTime()));
