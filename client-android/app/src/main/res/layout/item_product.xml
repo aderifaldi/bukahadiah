@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/containerItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/imageProduct"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"/>
+
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="@dimen/paddingNormal"
+            android:paddingRight="@dimen/paddingSmall"
+            android:paddingLeft="@dimen/paddingSmall"
+            android:orientation="vertical">
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:id="@+id/productName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorPrimaryFont"
+                android:textSize="@dimen/fontSmall"
+                android:text=""
+                android:maxLines="2"
+                custom:font="@string/light"/>
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:id="@+id/productPrice"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryFont"
+                android:textSize="@dimen/fontMedium"
+                android:text=""
+                android:maxLines="2"
+                custom:font="@string/regular"/>
+
+            <LinearLayout
+                android:id="@+id/containerRating"
+                android:layout_marginTop="@dimen/paddingSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/ratting"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGold"
+                    android:textSize="@dimen/fontSmall"
+                    android:text=""
+                    custom:font="@string/light"/>
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/userCount"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGold"
+                    android:textSize="@dimen/fontSmall"
+                    android:text=""
+                    custom:font="@string/light"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

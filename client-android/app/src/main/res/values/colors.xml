@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff6265</color>
+    <color name="colorPrimaryDark">#ff6265</color>
+    <color name="colorAccentDark">#fd4f53</color>
+
+    <color name="colorBlueFacebook">#3b5998</color>
+    <color name="colorBlueFacebookAccent">#8b9dc3</color>
+    <!--d6d2d2-->
+    <color name="colorAccent">#d6d2d2</color>
+    <color name="colorGrey">#fcfcfc</color>
+    <color name="transparantGery">#BFffffff</color>
+
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorNull">#00ffffff</color>
+    <color name="colorGold">#ff6265</color>
+
+    <color name="colorPrimaryFont">#000000</color>
+    <color name="colorSecondaryFont">#a4a4a4</color>
+</resources>

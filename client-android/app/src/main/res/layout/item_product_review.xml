@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/paddingNormal">
+        <com.playground.bukahadiah.customui.textview.CustomTextView
+            android:id="@+id/user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/fontSmall"
+            android:layout_centerVertical="true"
+            android:text=""
+            android:textColor="@color/colorPrimaryFont"
+            custom:font="@string/light"/>
+        <com.playground.bukahadiah.customui.textview.CustomTextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/fontExtraSmall"
+            android:layout_centerVertical="true"
+            android:text=""
+            android:textColor="@color/colorSecondaryFont"
+            custom:font="@string/light"/>
+
+        <com.playground.bukahadiah.customui.textview.CustomTextView
+            android:id="@+id/message"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/fontSmall"
+            android:layout_centerVertical="true"
+            android:text=""
+            android:textColor="@color/colorPrimaryFont"
+            custom:font="@string/light"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorAccent"/>
+
+</LinearLayout>

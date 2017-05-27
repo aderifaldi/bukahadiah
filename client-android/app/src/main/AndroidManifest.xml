@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.playground.bukahadiah">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/giftbox"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/giftbox"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.AddEventActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.MyEventDetailActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.AddWishItemActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity
+            android:name=".activity.SearchProductActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.ProductByCategoryActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.DetailProductActivity" />
+        <activity android:name=".activity.PhotoSliderActivity" />
+        <activity android:name=".activity.ProductReviewActivity" />
+        <activity android:name=".activity.MyWIshboxActivity" />
+        <activity android:name=".activity.EventDetailActivity" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.UserProfileActivity" />
+        <activity android:name=".activity.BukaLapakViewActivity" />
+
+        <service android:name=".service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".service.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".activity.RegisterSuccessActivity" />
+        <activity android:name=".activity.SendConfirmationActivity" />
+        <activity android:name=".activity.NotificationListActivity"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/paddingNormal">
+
+        <com.playground.bukahadiah.customui.imageview.CircleImageView
+            android:id="@+id/imageUser"
+            android:layout_width="@dimen/userImageSize"
+            android:layout_height="@dimen/userImageSize"
+            android:scaleType="centerCrop" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/containerFollower"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingRight="@dimen/paddingBig">
+
+                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Follower"
+                        android:textColor="@color/colorPrimaryFont"
+                        android:textSize="@dimen/fontMedium"
+                        custom:font="@string/light" />
+
+                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                        android:id="@+id/follower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text=""
+                        android:textColor="@color/colorPrimaryFont"
+                        android:textSize="@dimen/fontBig"
+                        custom:font="@string/regular" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/paddingNormal"
+                    android:orientation="vertical">
+
+                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Following"
+                        android:textColor="@color/colorPrimaryFont"
+                        android:textSize="@dimen/fontMedium"
+                        custom:font="@string/light" />
+
+                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                        android:id="@+id/following"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text=""
+                        android:textColor="@color/colorPrimaryFont"
+                        android:textSize="@dimen/fontBig"
+                        custom:font="@string/regular" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/containerFollower"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/paddingMedium">
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/nameUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/colorPrimaryFont"
+                    android:textSize="@dimen/fontNormal"
+                    custom:font="@string/regular" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/colorPrimaryFont"
+                    android:textSize="@dimen/fontSmall"
+                    custom:font="@string/light" />
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/paddingSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/paddingNormal"
+                    android:paddingRight="@dimen/paddingNormal"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:clickable="true"
+                    android:background="@drawable/bg_login_google_selector">
+                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Follow"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/fontSmall"
+                        custom:font="@string/light" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/MyCustomTabLayout"
+            app:tabMaxWidth="0dp"
+            app:tabGravity="fill"
+            app:tabMode="fixed"/>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/menuActivities"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/txtActivities"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Activities"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/fontMedium"
+                    custom:font="@string/regular" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/menuEvents"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/txtEvents"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Events"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/fontMedium"
+                    custom:font="@string/regular" />
+            </RelativeLayout>
+        </TableRow>
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pagerProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

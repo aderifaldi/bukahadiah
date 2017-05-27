@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context="com.playground.bukahadiah.activity.DetailProductActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include
+            layout="@layout/appbar"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:background="@drawable/bg_noticifaction_selector"
+            android:layout_alignParentRight="true">
+            <RelativeLayout
+                android:id="@+id/addToWishBox"
+                android:layout_width="@dimen/toolbarSize"
+                android:layout_height="@dimen/toolbarSize">
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_add"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/imageProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"/>
+
+                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                        android:id="@+id/textIndicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/fontExtraSmall"
+                        android:background="@color/transparent_black"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:textColor="@color/colorWhite"
+                        custom:font="@string/light" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/paddingSmall">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:id="@+id/productName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/fontNormal"
+                                android:text=""
+                                android:maxLines="5"
+                                android:textColor="@color/colorPrimaryFont"
+                                custom:font="@string/light" />
+
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:id="@+id/productPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/fontBig"
+                                android:text=""
+                                android:textColor="@color/colorPrimaryFont"
+                                custom:font="@string/regular" />
+
+                            <LinearLayout
+                                android:id="@+id/containerRating"
+                                android:layout_marginTop="@dimen/paddingSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <com.playground.bukahadiah.customui.textview.CustomTextView
+                                    android:id="@+id/ratting"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorGold"
+                                    android:textSize="@dimen/fontSmall"
+                                    android:text=""
+                                    custom:font="@string/light"/>
+
+                                <com.playground.bukahadiah.customui.textview.CustomTextView
+                                    android:id="@+id/userCount"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorGold"
+                                    android:textSize="@dimen/fontSmall"
+                                    android:text=""
+                                    custom:font="@string/light"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/paddingBig"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <com.playground.bukahadiah.customui.imageview.CircleImageView
+                                    android:id="@+id/sellerAvatar"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp" />
+
+                                <LinearLayout
+                                    android:layout_marginLeft="@dimen/paddingSmall"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+                                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                                        android:id="@+id/sellerName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@color/colorPrimaryFont"
+                                        android:textSize="@dimen/fontSmall"
+                                        android:text=""
+                                        custom:font="@string/regular"/>
+
+                                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                                        android:id="@+id/sellerLevel"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@color/colorPrimaryFont"
+                                        android:textSize="@dimen/fontSmall"
+                                        android:text=""
+                                        custom:font="@string/light"/>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/paddingNormal">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:layout_width="56dp"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimaryFont"
+                                android:textSize="@dimen/fontSmall"
+                                android:text="Condition"
+                                custom:font="@string/light"/>
+
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimaryFont"
+                                android:textSize="@dimen/fontSmall"
+                                android:text=":  "
+                                custom:font="@string/light"/>
+
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:id="@+id/condition"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="1dp"
+                                android:paddingBottom="1dp"
+                                android:paddingRight="4dp"
+                                android:paddingLeft="4dp"
+                                android:background="@color/colorPrimary"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/fontSmall"
+                                android:text=""
+                                custom:font="@string/light"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/paddingExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:layout_width="56dp"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimaryFont"
+                                android:textSize="@dimen/fontSmall"
+                                android:text="Sold"
+                                custom:font="@string/light"/>
+
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimaryFont"
+                                android:textSize="@dimen/fontSmall"
+                                android:text=":  "
+                                custom:font="@string/light"/>
+
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:id="@+id/soldCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimaryFont"
+                                android:textSize="@dimen/fontSmall"
+                                android:text=""
+                                custom:font="@string/light"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/paddingExtraSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:layout_width="56dp"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimaryFont"
+                                android:textSize="@dimen/fontSmall"
+                                android:text="Viewed"
+                                custom:font="@string/light"/>
+
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimaryFont"
+                                android:textSize="@dimen/fontSmall"
+                                android:text=":  "
+                                custom:font="@string/light"/>
+
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:id="@+id/viewedCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimaryFont"
+                                android:textSize="@dimen/fontSmall"
+                                android:text=""
+                                custom:font="@string/light"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/paddingNormal">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:layout_width="56dp"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimaryFont"
+                                android:textSize="@dimen/fontSmall"
+                                android:text="Updated"
+                                custom:font="@string/light"/>
+
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimaryFont"
+                                android:textSize="@dimen/fontSmall"
+                                android:text=":  "
+                                custom:font="@string/light"/>
+
+                            <com.playground.bukahadiah.customui.textview.CustomTextView
+                                android:id="@+id/lastUpdate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimaryFont"
+                                android:textSize="@dimen/fontSmall"
+                                android:text=""
+                                custom:font="@string/light"/>
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/containerReviewed"
+                            android:layout_marginTop="@dimen/paddingExtraSmall"
+                            android:layout_width="match_parent"
+                            android:background="@color/colorGrey"
+                            android:layout_height="36dp">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_reviewed"/>
+                                <com.playground.bukahadiah.customui.textview.CustomTextView
+                                    android:id="@+id/reviewedCount"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/fontSmall"
+                                    android:text="See reviews"
+                                    custom:font="@string/light"/>
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </TableRow>
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:id="@+id/desc"
+                android:padding="@dimen/paddingNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryFont"
+                android:textSize="@dimen/fontMedium"
+                android:text=""
+                custom:font="@string/light"/>
+
+            <RelativeLayout
+                android:id="@+id/btnConfirmation"
+                android:layout_marginTop="@dimen/paddingNormal"
+                android:layout_marginLeft="@dimen/paddingNormal"
+                android:layout_marginRight="@dimen/paddingNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/paddingMedium"
+                android:clickable="true"
+                android:background="@drawable/bg_login_selector">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/buyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontMedium"
+                    android:text="Send Confirmation"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/colorWhite"
+                    custom:font="@string/regular" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/btnSeeInBL"
+                android:layout_margin="@dimen/paddingNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/paddingMedium"
+                android:clickable="true"
+                android:background="@drawable/bg_login_google_selector">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontMedium"
+                    android:text="See this product in BukaLapak"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/colorWhite"
+                    custom:font="@string/regular" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

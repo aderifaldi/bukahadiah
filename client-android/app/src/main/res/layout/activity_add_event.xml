@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context="com.playground.bukahadiah.activity.AddEventActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include
+            layout="@layout/appbar"/>
+
+        <RelativeLayout
+            android:id="@+id/saveEvent"
+            android:layout_width="@dimen/toolbarSize"
+            android:layout_height="@dimen/toolbarSize"
+            android:clickable="true"
+            android:background="@drawable/bg_noticifaction_selector"
+            android:layout_alignParentRight="true">
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_save"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/colorGrey">
+                <ImageView
+                    android:id="@+id/imageEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"/>
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/uploadImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/uploadImage"
+                    android:textSize="@dimen/fontMedium"
+                    android:textColor="@color/colorAccent"
+                    android:layout_centerInParent="true"
+                    android:padding="@dimen/paddingBig"
+                    custom:font="@string/regular"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/paddingNormal"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                        android:id="@+id/eventDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Event's date"
+                        android:layout_marginLeft="4dp"
+                        android:textSize="@dimen/fontNormal"
+                        android:layout_centerVertical="true"
+                        custom:font="@string/regular"/>
+
+                    <RelativeLayout
+                        android:id="@+id/showCallendar"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true">
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_calendar"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginTop="@dimen/paddingNormal"
+                    android:id="@+id/tilEventName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edtEventName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Event's name"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorAccent"
+                        android:textSize="@dimen/fontNormal" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilDesc"
+                    android:layout_marginTop="@dimen/paddingSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edtDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:hint="Event's desc"
+                        android:gravity="top|left"
+                        android:inputType="textMultiLine"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorAccent"
+                        android:textSize="@dimen/fontNormal" />
+                </android.support.design.widget.TextInputLayout>
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/createEvent"
+                    android:layout_marginTop="@dimen/paddingNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddingMedium"
+                    android:clickable="true"
+                    android:background="@drawable/bg_login_google_selector">
+                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/createEvent"
+                        android:textSize="@dimen/fontMedium"
+                        android:textColor="@color/colorWhite"
+                        android:layout_centerInParent="true"
+                        custom:font="@string/regular"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

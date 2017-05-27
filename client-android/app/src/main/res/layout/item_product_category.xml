@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/paddingNormal"
+    android:background="@color/colorWhite">
+
+    <com.playground.bukahadiah.customui.textview.CustomTextView
+        android:id="@+id/categoryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontMedium"
+        android:layout_centerVertical="true"
+        android:text="Ade"
+        android:textColor="@color/colorPrimaryFont"
+        custom:font="@string/light"/>
+
+</RelativeLayout>

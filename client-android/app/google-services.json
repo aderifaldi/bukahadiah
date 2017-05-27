@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "83016013946",
+    "firebase_url": "https://bukahadiah.firebaseio.com",
+    "project_id": "bukahadiah",
+    "storage_bucket": "bukahadiah.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83016013946:android:f5171304bc0d09a3",
+        "android_client_info": {
+          "package_name": "com.playground.bukahadiah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83016013946-81k95229mpvrom6fa69tlapq9u7t9tul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC3r_n0z5xaZEg7ap0Y6N_-TJVLMUfHIk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

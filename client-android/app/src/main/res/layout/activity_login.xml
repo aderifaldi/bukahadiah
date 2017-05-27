@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context="com.playground.bukahadiah.activity.LoginActivity">
+
+    <RelativeLayout
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/paddingNormal"
+        android:clickable="true"
+        android:background="@drawable/bg_register_selector">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true">
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/fontMedium"
+                android:text="Don't have an account? "
+                android:layout_centerInParent="true"
+                android:textColor="@color/colorPrimary"
+                custom:font="@string/light" />
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/fontMedium"
+                android:text="Register here"
+                android:layout_centerInParent="true"
+                android:textColor="@color/colorPrimary"
+                custom:font="@string/regular" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btnRegister">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="64dp"
+            android:paddingRight="64dp"
+            android:paddingTop="48dp"
+            android:paddingBottom="24dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/giftbox"
+                android:layout_gravity="center_horizontal"/>
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:layout_marginTop="@dimen/paddingSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/fontMedium"
+                android:text="Login with"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                custom:font="@string/regular" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/paddingBig"
+                android:paddingLeft="@dimen/paddingNormal"
+                android:paddingRight="@dimen/paddingNormal"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/paddingNormal">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontBig"
+                    android:text="BukaLapak "
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    custom:font="@string/regular" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontBig"
+                    android:text="Account"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    custom:font="@string/light" />
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edtUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username / Email"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="@dimen/fontNormal" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilPassword"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:textSize="@dimen/fontNormal"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorAccent"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <RelativeLayout
+                android:id="@+id/btnLogin"
+                android:layout_marginTop="@dimen/paddingBig"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/paddingMedium"
+                android:clickable="true"
+                android:background="@drawable/bg_login_selector">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text="Login"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/colorWhite"
+                    custom:font="@string/regular" />
+            </RelativeLayout>
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/paddingNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/fontMedium"
+                android:text="Or login use your"
+                android:padding="@dimen/paddingNormal"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorPrimary"
+                custom:font="@string/regular" />
+
+            <TableRow
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/facebookLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:clickable="true"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/bg_login_facebook_selector"
+                    android:layout_weight="1">
+                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/fontMedium"
+                        android:text="Facebook"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/colorWhite"
+                        custom:font="@string/regular" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/googleLogin"
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:clickable="true"
+                    android:background="@drawable/bg_login_google_selector"
+                    android:layout_weight="1">
+                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/fontMedium"
+                        android:text="Google"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/colorWhite"
+                        custom:font="@string/regular" />
+                </RelativeLayout>
+            </TableRow>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

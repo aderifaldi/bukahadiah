@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="botomMenuSize">56dp</dimen>
+    <dimen name="toolbarSize">48dp</dimen>
+    <dimen name="botomMenuIcon">18dp</dimen>
+    <dimen name="userImageSize">56dp</dimen>
+
+    <dimen name="fontExtraBig">20sp</dimen>
+    <dimen name="fontBig">18sp</dimen>
+    <dimen name="fontNormal">16sp</dimen>
+    <dimen name="fontMedium">14sp</dimen>
+    <dimen name="fontSmall">12sp</dimen>
+    <dimen name="fontExtraSmall">10dp</dimen>
+
+    <dimen name="paddingBig">24dp</dimen>
+    <dimen name="paddingNormal">16dp</dimen>
+    <dimen name="paddingMedium">12dp</dimen>
+    <dimen name="paddingSmall">8dp</dimen>
+    <dimen name="paddingExtraSmall">4dp</dimen>
+
+    <dimen name="buttonSendSize">48dp</dimen>
+    <dimen name="giftItemImageSize">84dp</dimen>
+</resources>

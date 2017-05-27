@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context="com.playground.bukahadiah.activity.MyEventDetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include
+            layout="@layout/appbar"/>
+
+        <RelativeLayout
+            android:id="@+id/addWish"
+            android:layout_width="@dimen/toolbarSize"
+            android:layout_height="@dimen/toolbarSize"
+            android:clickable="true"
+            android:background="@drawable/bg_noticifaction_selector"
+            android:layout_alignParentRight="true">
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_wish_box"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/eventImage"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:scaleType="centerCrop"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/paddingNormal">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <com.playground.bukahadiah.customui.textview.CustomTextView
+                            android:id="@+id/eventName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/fontNormal"
+                            android:textColor="@color/colorPrimaryFont"
+                            custom:font="@string/regular"/>
+
+                        <com.playground.bukahadiah.customui.textview.CustomTextView
+                            android:id="@+id/eventDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/fontBig"
+                            android:textColor="@color/colorPrimary"
+                            custom:font="@string/light"/>
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btnSaveDate"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/paddingNormal"
+                        android:paddingRight="@dimen/paddingNormal"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:clickable="true"
+                        android:background="@drawable/bg_login_google_selector">
+                        <com.playground.bukahadiah.customui.textview.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Save Date"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/fontMedium"
+                            custom:font="@string/light" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_marginTop="@dimen/paddingBig"
+                    android:id="@+id/eventDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light"/>
+            </LinearLayout>
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:padding="@dimen/paddingNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wish List:"
+                android:textSize="@dimen/fontNormal"
+                android:textColor="@color/colorPrimaryFont"
+                custom:font="@string/light"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/listWish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/emptyInfo"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontMedium"
+                    android:textColor="@color/colorSecondaryFont"
+                    android:layout_centerInParent="true"
+                    custom:font="@string/light"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

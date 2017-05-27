@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/paddingNormal">
+
+            <com.playground.bukahadiah.customui.imageview.CircleImageView
+                android:id="@+id/imageUser"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentLeft="true"/>
+
+            <LinearLayout
+                android:layout_toRightOf="@id/imageUser"
+                android:layout_marginLeft="@dimen/paddingSmall"
+                android:layout_marginRight="@dimen/paddingBig"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/eventName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontMedium"
+                    android:maxLines="2"
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/regular"/>
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/eventDate"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontSmall"
+                    android:textColor="@color/colorSecondaryFont"
+                    custom:font="@string/light"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imageEvent"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/colorAccent"
+            android:scaleType="centerCrop"/>
+
+        <com.playground.bukahadiah.customui.textview.CustomTextView
+            android:id="@+id/eventDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:padding="@dimen/paddingNormal"
+            android:textSize="@dimen/fontMedium"
+            android:textColor="@color/colorPrimaryFont"
+            custom:font="@string/light"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorAccent"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context="com.playground.bukahadiah.activity.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbarSize"
+        android:background="@color/colorPrimary">
+        <com.playground.bukahadiah.customui.textview.CustomTextView
+            android:id="@+id/pageTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="@dimen/fontNormal"
+            android:textColor="@color/colorWhite"
+            android:layout_centerInParent="true"
+            custom:font="@string/regular"/>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/menuTop"
+            android:layout_width="@dimen/toolbarSize"
+            android:layout_height="@dimen/toolbarSize"
+            android:clickable="true"
+            android:background="@drawable/bg_noticifaction_selector"
+            android:layout_alignParentRight="true">
+            <ImageView
+                android:id="@+id/btnMenuTop"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/notification"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/botomMenu"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include
+                layout="@layout/ui_botom_menu"/>
+        </LinearLayout>
+
+        <com.playground.bukahadiah.customui.viewpager.NonSwipeableViewPager
+            android:id="@+id/body"
+            android:layout_above="@id/botomMenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

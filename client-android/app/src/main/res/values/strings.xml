@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Buka Hadiah</string>
+
+    <!-- Font Style -->
+    <string name="bold">bold</string>
+    <string name="regular">regular</string>
+    <string name="light">light</string>
+
+    <!-- Animation Duration -->
+    <string name="anim_duration_slide">200</string>
+    <string name="anim_duration_pull">400</string>
+
+    <string name="event">Events</string>
+    <string name="friends">Search Friends</string>
+    <string name="profile">Profile</string>
+    <string name="addPost">Add Post</string>
+    <string name="uploadImage">Upload Image</string>
+    <string name="createEvent">Create Event</string>
+
+</resources>
