@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context="com.playground.bukahadiah.activity.AddPostActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include
+            layout="@layout/appbar"/>
+
+        <RelativeLayout
+            android:id="@+id/sendPost"
+            android:layout_width="@dimen/toolbarSize"
+            android:layout_height="@dimen/toolbarSize"
+            android:clickable="true"
+            android:background="@drawable/bg_noticifaction_selector"
+            android:layout_alignParentRight="true">
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/send_post"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/imagePost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_gift"
+                android:background="@color/colorGrey"/>
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:id="@+id/uploadImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/paddingMedium"
+                android:textSize="@dimen/fontMedium"
+                custom:font="@string/regular"
+                android:text="Pic your gift!"
+                android:layout_centerInParent="true"
+                android:background="@color/transparantGery"
+                android:textColor="@color/colorPrimaryFont"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorWhite"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:padding="@dimen/paddingNormal"
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent_black">
+            <EditText
+                android:id="@+id/edtCaption"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="Captions"
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:background="@color/colorNull"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
+                android:textSize="@dimen/fontNormal" />
+        </RelativeLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:visibility="gone"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/tilCaption"
+            android:paddingLeft="@dimen/paddingNormal"
+            android:paddingRight="@dimen/paddingNormal"
+            android:background="@color/transparent_black"
+            android:textColorHint="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.design.widget.TextInputLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

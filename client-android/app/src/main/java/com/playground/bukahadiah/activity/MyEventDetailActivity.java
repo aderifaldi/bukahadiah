@@ -60,30 +60,30 @@ public class MyEventDetailActivity extends BaseActivity {
 
         event = (BHEvent.EventData) getIntent().getExtras().getSerializable("event");
 
-        if (event.event_photo != null || event.event_photo != ""){
-            ImageDownloader imageDownloader = new ImageDownloader(event.event_photo,
-                    getApplicationContext(), new ImageDownloader.OnImageFinishDownload() {
-                @Override
-                public void onFinish(Bitmap bitmap, int returnCode) {
-                    if (bitmap != null) {
-                        eventImage.setImageBitmap(bitmap);
-                        eventImage.setVisibility(View.VISIBLE);
+//        if (event.event_photo != null || event.event_photo != ""){
+//            ImageDownloader imageDownloader = new ImageDownloader(event.event_photo,
+//                    getApplicationContext(), new ImageDownloader.OnImageFinishDownload() {
+//                @Override
+//                public void onFinish(Bitmap bitmap, int returnCode) {
+//                    if (bitmap != null) {
+//                        eventImage.setImageBitmap(bitmap);
+//                        eventImage.setVisibility(View.VISIBLE);
+//
+//                        int layoutHeight = screenSize.x * bitmap.getHeight()/bitmap.getWidth();
+//                        ViewGroup.LayoutParams params = eventImage.getLayoutParams();
+//                        params.height = layoutHeight;
+//                        eventImage.setLayoutParams(params);
+//                    }
+//                }
+//            });
+//            imageDownloader.setSizeOption(screenSize.x, true);
+//            imageDownloader.execute();
+//        }
 
-                        int layoutHeight = screenSize.x * bitmap.getHeight()/bitmap.getWidth();
-                        ViewGroup.LayoutParams params = eventImage.getLayoutParams();
-                        params.height = layoutHeight;
-                        eventImage.setLayoutParams(params);
-                    }
-                }
-            });
-            imageDownloader.setSizeOption(screenSize.x, true);
-            imageDownloader.execute();
-        }
-
-//        Glide.with(getApplicationContext())
-//                .load(event.event_photo)
-//                .crossFade()
-//                .into(eventImage);
+        Glide.with(getApplicationContext())
+                .load(event.event_photo)
+                .crossFade()
+                .into(eventImage);
 
         eventName.setText(event.event_name);
         eventDesc.setText(event.event_description);

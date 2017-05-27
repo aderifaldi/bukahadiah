@@ -270,8 +270,8 @@ public class DetailProductActivity extends BaseActivity {
         jsonPost = new JsonObject();
 
         JsonObject notification = new JsonObject();
-        notification.addProperty("title", "Gift Confirmation");
-        notification.addProperty("message", "");
+        notification.addProperty("title", GlobalVariable.getNameUser(getApplicationContext()));
+        notification.addProperty("message", "has confirmed to gift you " + productDetail.product.name);
 
         jsonPost.add("data", notification);
         jsonPost.addProperty("to", GlobalVariable.getTempFriendFCMToken(getApplicationContext()));
@@ -281,9 +281,14 @@ public class DetailProductActivity extends BaseActivity {
         call.enqueue(new Callback<Notification>() {
             @Override
             public void onResponse(Call<Notification> call, Response<Notification> response) {
-                if (response.isSuccessful()){
+
+                Notification apiResponse = response.body();
+
+                if (apiResponse.success == 1){
+                    Toast.makeText(DetailProductActivity.this, "Confirmation sent!", Toast.LENGTH_SHORT).show();
                     Log.d("SendNotification", "Success Status : " + response.body().success);
                 }
+
             }
 
             @Override
@@ -338,7 +343,7 @@ public class DetailProductActivity extends BaseActivity {
             @Override
             public void onResponse(Call<ModelBase> call, Response<ModelBase> response) {
                 dismissLoading();
-                Toast.makeText(DetailProductActivity.this, response.body().getAlerts().message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailProductActivity.this, productDetail.product.name + " added to Wishbox", Toast.LENGTH_SHORT).show();
                 exitByBackByPresses();
             }
 

@@ -113,8 +113,9 @@ public class MainActivity extends BaseActivity {
                 body.setCurrentItem(1);
                 break;
             case R.id.menuAdd:
-                menuAddSelected();
-                body.setCurrentItem(2);
+                startActivity(new Intent(getApplicationContext(), AddPostActivity.class));
+                menuHomeSelected();
+                body.setCurrentItem(0);
                 break;
             case R.id.menuSearch:
                 menuSearchSelected();
@@ -181,7 +182,7 @@ public class MainActivity extends BaseActivity {
         btnHeart.setImageResource(R.drawable.ic_heart);
         btnUser.setImageResource(R.drawable.ic_user);
 
-        menuTop.setVisibility(View.VISIBLE);
+        menuTop.setVisibility(View.GONE);
         btnMenuTop.setImageResource(R.drawable.send_post);
 
         search.hideSearchBar();
@@ -298,7 +299,7 @@ public class MainActivity extends BaseActivity {
                 goToAnimation();
             }else if (isAddPost){
                 //Goto notification
-                addNew.SendPost();
+//                addNew.SendPost();
             }else if (isSettings){
                 //Goto settings
 //                startActivity(new Intent(getApplicationContext(), SettingActivity.class));

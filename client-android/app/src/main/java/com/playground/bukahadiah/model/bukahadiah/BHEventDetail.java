@@ -11,7 +11,7 @@ public class BHEventDetail extends ModelBase implements Serializable {
 
     public class EventData implements Serializable{
         public int event_id, user_id, gift_count;
-        public String event_name, user_blid, event_description, event_photo, user_name, user_photo, fcm_token;
+        public String event_name, user_blid, event_description, event_photo, user_name, user_photo, user_fcm_token;
         public Date created_date;
     }
 

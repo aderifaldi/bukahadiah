@@ -7,8 +7,10 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.JsonObject;
 import com.playground.bukahadiah.R;
 import com.playground.bukahadiah.adapter.ProfilePagerAdapter;
 import com.playground.bukahadiah.customui.imageview.CircleImageView;
@@ -18,6 +20,10 @@ import com.playground.bukahadiah.fragment.MyEventsFragment;
 import com.playground.bukahadiah.helper.GlobalVariable;
 import com.playground.bukahadiah.model.bukahadiah.BHUser;
 import com.playground.bukahadiah.model.bukahadiah.BHUserDetail;
+import com.playground.bukahadiah.model.bukahadiah.ModelBase;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,6 +82,7 @@ public class UserProfileActivity extends BaseActivity {
     private MyEventsFragment events;
 
     private String userId;
+    private BHUserDetail user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,12 +135,53 @@ public class UserProfileActivity extends BaseActivity {
         GetMemberInfo();
     }
 
+    private void FollowUser(final String name, final boolean status){
+
+        SimpleDateFormat sdf = new SimpleDateFormat(GlobalVariable.DATE_FORMAT);
+        Calendar calendar = Calendar.getInstance();
+
+        jsonPost = new JsonObject();
+
+        jsonPost.addProperty("user_id", GlobalVariable.getUserId(getApplicationContext()));
+        jsonPost.addProperty("friend_id", user.data[0].user_blid);
+        jsonPost.addProperty("friend_date", sdf.format(calendar.getTime()));
+        jsonPost.addProperty("is_following", status);
+        jsonPost.addProperty("is_followers", status);
+
+        Call<ModelBase> call = apiServiceBH.FollowUser(jsonPost);
+        call.enqueue(new Callback<ModelBase>() {
+            @Override
+            public void onResponse(Call<ModelBase> call, Response<ModelBase> response) {
+                if (!response.body().isError()){
+                    String message = "";
+                    if (status){
+                        message = "You Followed " + name;
+                    }else {
+                        message = "You Unfollowed " + name;
+                    }
+
+                    Toast.makeText(UserProfileActivity.this, message, Toast.LENGTH_SHORT).show();
+                    GetMemberInfo();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ModelBase> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+
     private void GetMemberInfo(){
+        showLoading();
         Call<BHUserDetail> call = apiServiceBH.MemberProfile(GlobalVariable.getUserId(getApplicationContext()), userId);
         call.enqueue(new Callback<BHUserDetail>() {
             @Override
             public void onResponse(Call<BHUserDetail> call, Response<BHUserDetail> response) {
-                BHUserDetail user = response.body();
+                dismissLoading();
+                user = response.body();
                 if (!user.isError()){
                     nameUser.setText(user.data[0].user_name);
                     username.setText(user.data[0].user_screename);
@@ -141,7 +189,7 @@ public class UserProfileActivity extends BaseActivity {
                     following.setText("" + user.data[0].following_count);
 
                     if (user.data[0].is_following){
-                        txtFollow.setText("Following");
+                        txtFollow.setText("Unfollow");
                     }else {
                         txtFollow.setText("Follow");
                     }
@@ -167,6 +215,13 @@ public class UserProfileActivity extends BaseActivity {
                 exitByBackByPresses();
                 break;
             case R.id.btnFollow:
+
+                if (!user.data[0].is_follower){
+                    FollowUser(user.data[0].user_name, true);
+                }else {
+                    FollowUser(user.data[0].user_name, false);
+                }
+
                 break;
         }
     }

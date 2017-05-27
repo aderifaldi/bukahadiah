@@ -45,10 +45,15 @@ public interface ApiServiceBH {
     String UPDATE_PHOTO = "members/{user_id}/photo";
     String ADD_NOTIFICATION = "Notification";
     String GET_NOTIFICATION = "Notification/get/{user_id}";
+    String MEMBER_FOLLOW = "Friendship";
 
     @Headers("Content-Type: application/json")
     @POST(GIFTBOX)
     Call<BHGift> CreateGiftBox(@Body JsonObject jsonPost);
+
+    @Headers("Content-Type: application/json")
+    @POST(MEMBER_FOLLOW)
+    Call<ModelBase> FollowUser(@Body JsonObject jsonPost);
 
     @Headers("Content-Type: application/json")
     @POST(ADD_WISH)

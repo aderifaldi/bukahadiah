@@ -68,7 +68,9 @@
 
         <activity android:name=".activity.RegisterSuccessActivity" />
         <activity android:name=".activity.SendConfirmationActivity" />
-        <activity android:name=".activity.NotificationListActivity"></activity>
+        <activity android:name=".activity.NotificationListActivity" />
+        <activity android:name=".activity.AddPostActivity"
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>
