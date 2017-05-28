@@ -239,71 +239,8 @@ public class DetailProductActivity extends BaseActivity {
                         .putExtra("product", productDetail.product));
                 goToAnimation();
 
-//                showLoading();
-//
-//                SimpleDateFormat sdf = new SimpleDateFormat(GlobalVariable.DATE_FORMAT);
-//                Calendar calendar = Calendar.getInstance();
-//
-//                jsonPost = new JsonObject();
-//                jsonPost.addProperty("gift_item_id", wishItemId);
-//                jsonPost.addProperty("user_id", GlobalVariable.getUserId(getApplicationContext()));
-//                jsonPost.addProperty("friend_id", GlobalVariable.getTempFriendId(getApplicationContext()));
-//                jsonPost.addProperty("title", GlobalVariable.getNameUser(getApplicationContext()));
-//                jsonPost.addProperty("message", "has confirmed to gift you " + productDetail.product.name);
-//                jsonPost.addProperty("create_date", sdf.format(calendar.getTime()));
-//
-//                Call<ModelBase> call = apiServiceBH.AddNotification(jsonPost);
-//                call.enqueue(new Callback<ModelBase>() {
-//                    @Override
-//                    public void onResponse(Call<ModelBase> call, Response<ModelBase> response) {
-//                        if (!response.body().isError()){
-//                            dismissLoading();
-//                            sendNotification();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<ModelBase> call, Throwable t) {
-//
-//                    }
-//                });
-
                 break;
         }
-    }
-
-    private void sendNotification(){
-        jsonPost = new JsonObject();
-
-        JsonObject notification = new JsonObject();
-        notification.addProperty("title", GlobalVariable.getNameUser(getApplicationContext()));
-        notification.addProperty("message", "has confirmed to gift you " + productDetail.product.name);
-
-        jsonPost.add("data", notification);
-        jsonPost.addProperty("to", GlobalVariable.getTempFriendFCMToken(getApplicationContext()));
-        jsonPost.addProperty("priority", "High");
-
-        Call<Notification> call = apiServiceNotification.sendNotification(jsonPost);
-        call.enqueue(new Callback<Notification>() {
-            @Override
-            public void onResponse(Call<Notification> call, Response<Notification> response) {
-
-                Notification apiResponse = response.body();
-
-                if (apiResponse.success == 1){
-                    Toast.makeText(DetailProductActivity.this, "Confirmation sent!", Toast.LENGTH_SHORT).show();
-                    Log.d("SendNotification", "Success Status : " + response.body().success);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<Notification> call, Throwable t) {
-
-            }
-        });
-
-
     }
 
     private void DeleteWish(int id){

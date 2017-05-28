@@ -1,18 +1,25 @@
 package com.playground.bukahadiah.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.google.gson.JsonObject;
 import com.playground.bukahadiah.R;
 import com.playground.bukahadiah.customui.textview.CustomTextView;
 import com.playground.bukahadiah.helper.GlobalVariable;
+import com.playground.bukahadiah.model.Notification;
 import com.playground.bukahadiah.model.bukahadiah.BHInvoice;
 import com.playground.bukahadiah.model.bukahadiah.BHInvoiceDetail;
 import com.playground.bukahadiah.model.bukahadiah.BHInvoiceList;
+import com.playground.bukahadiah.model.bukahadiah.ModelBase;
+import com.playground.bukahadiah.model.bukalapak.BLProductDetail;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,16 +58,19 @@ public class MyInvoiceDetailActivity extends BaseActivity {
     CustomTextView totalPayment;
     @BindView(R.id.shippingAddress)
     CustomTextView shippingAddress;
+    @BindView(R.id.status) CustomTextView status;
 
     private BHInvoiceList.InvoiceListData invoiceList;
     private SimpleDateFormat sdf;
     private DecimalFormat decimalFormat;
     private DecimalFormatSymbols symbols;
+    private boolean canConfirm;
+    private BHInvoiceDetail invoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_invoice_detail);
+        setContentView(R.layout.activity_my_invoice_detail);
         ButterKnife.bind(this);
 
         pageTitle.setText("My Invoice");
@@ -87,9 +97,21 @@ public class MyInvoiceDetailActivity extends BaseActivity {
             public void onResponse(Call<BHInvoiceDetail> call, Response<BHInvoiceDetail> response) {
                 dismissLoading();
 
-                BHInvoiceDetail invoice = response.body();
+                invoice = response.body();
                 if (!response.body().isError()){
                     if (invoice != null){
+
+                        if (invoice.data.invoice.state.equals("expired")){
+                            canConfirm = false;
+                            status.setText("EXPIRED");
+                        }else if (invoice.data.invoice.state.equals("payment_chosen")){
+                            canConfirm = false;
+                            status.setText("WAITING PAYMENT");
+                        }else {
+                            canConfirm = true;
+                            status.setText("SEND CONFIRMATION");
+                        }
+
                         idTagihan.setText("Payment Charge " + invoice.data.invoice.invoice_id);
                         userName.setText("Hi " + invoice.data.invoice.buyer.name + ",");
                         dueDate.setText(sdf.format(invoice.data.invoice.pay_before));
@@ -115,6 +137,74 @@ public class MyInvoiceDetailActivity extends BaseActivity {
 
             }
         });
+    }
+
+    @OnClick(R.id.status)
+    protected void status(){
+        if (canConfirm){
+            showLoading();
+
+            SimpleDateFormat sdf = new SimpleDateFormat(GlobalVariable.DATE_FORMAT);
+            Calendar calendar = Calendar.getInstance();
+
+            jsonPost = new JsonObject();
+            jsonPost.addProperty("gift_item_id", invoiceList.item_id);
+            jsonPost.addProperty("user_id", GlobalVariable.getUserId(getApplicationContext()));
+            jsonPost.addProperty("friend_id", GlobalVariable.getTempFriendId(getApplicationContext()));
+            jsonPost.addProperty("title", GlobalVariable.getNameUser(getApplicationContext()));
+            jsonPost.addProperty("message", "has confirmed to gift you " + invoice.data.invoice.transactions[0].products[0].name);
+            jsonPost.addProperty("create_date", sdf.format(calendar.getTime()));
+
+            Call<ModelBase> call = apiServiceBH.AddNotification(jsonPost);
+            call.enqueue(new Callback<ModelBase>() {
+                @Override
+                public void onResponse(Call<ModelBase> call, Response<ModelBase> response) {
+                    if (!response.body().isError()){
+                        dismissLoading();
+                        sendNotification();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ModelBase> call, Throwable t) {
+
+                }
+            });
+        }
+    }
+
+    private void sendNotification(){
+        jsonPost = new JsonObject();
+
+        JsonObject notification = new JsonObject();
+        notification.addProperty("title", GlobalVariable.getNameUser(getApplicationContext()));
+        notification.addProperty("message", "has confirmed to gift you " + invoice.data.invoice.transactions[0].products[0].name);
+
+        jsonPost.add("data", notification);
+        jsonPost.addProperty("to", GlobalVariable.getTempFriendFCMToken(getApplicationContext()));
+        jsonPost.addProperty("priority", "High");
+
+        Call<Notification> call = apiServiceNotification.sendNotification(jsonPost);
+        call.enqueue(new Callback<Notification>() {
+            @Override
+            public void onResponse(Call<Notification> call, Response<Notification> response) {
+
+                Notification apiResponse = response.body();
+
+                if (apiResponse.success == 1){
+                    Toast.makeText(MyInvoiceDetailActivity.this, "Confirmation sent!", Toast.LENGTH_SHORT).show();
+                    Log.d("SendNotification", "Success Status : " + response.body().success);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Notification> call, Throwable t) {
+
+            }
+        });
+
+
     }
 
     @OnClick(R.id.back)
