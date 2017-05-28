@@ -220,7 +220,8 @@ public class DetailProductActivity extends BaseActivity {
                 break;
             case R.id.imageProduct:
                 startActivity(new Intent(getApplicationContext(), PhotoSliderActivity.class)
-                        .putExtra("product", product));
+                        .putExtra("product", product)
+                        .putExtra("wishItemId", wishItemId));
                 goToAnimation();
                 break;
             case R.id.sellerName:

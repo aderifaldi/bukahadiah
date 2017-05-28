@@ -8,16 +8,23 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.playground.bukahadiah.R;
 import com.playground.bukahadiah.customui.textview.CustomTextView;
+import com.playground.bukahadiah.helper.GlobalVariable;
+import com.playground.bukahadiah.model.bukahadiah.BHBuy;
+import com.playground.bukahadiah.model.bukahadiah.ModelBase;
 import com.playground.bukahadiah.model.bukalapak.BLCities;
 import com.playground.bukahadiah.model.bukalapak.BLProduct;
 import com.playground.bukahadiah.model.bukalapak.BLProvince;
+import com.radyalabs.irfan.util.AppUtility;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,7 +80,7 @@ public class PaymentActivity extends BaseActivity {
     private String province, city, name, phone, area, userAddress, postCode, payment, kurir;
     private long price;
     private BLProduct.Product product;
-    private int cartId;
+    private int cartId, wishItemId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +88,7 @@ public class PaymentActivity extends BaseActivity {
         setContentView(R.layout.activity_payment);
         ButterKnife.bind(this);
 
+        wishItemId = getIntent().getIntExtra("wishItemId", 0);
         product = (BLProduct.Product) getIntent().getExtras().getSerializable("product");
         price = product.price;
 
@@ -113,13 +121,11 @@ public class PaymentActivity extends BaseActivity {
         adapterPaymentMethod.add("ATM");
 
         courier.setAdapter(adapterCourier);
-        adapterCourier.add("JNE");
-        adapterCourier.add("TIKI");
-        adapterCourier.add("POS");
 
         actProvince.setAdapter(adapterProvince);
         actProvince.setThreshold(1);
 
+        Buy();
         GetProvince();
 
         actProvince.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -139,13 +145,44 @@ public class PaymentActivity extends BaseActivity {
 
     }
 
-    private void GetProvince() {
+    private void Buy(){
+        jsonPost = new JsonObject();
+        jsonPost.addProperty("token", GlobalVariable.getBukalapakToken(getApplicationContext()));
+        jsonPost.addProperty("product_blid", product.id);
+        jsonPost.addProperty("quantity", 1);
+        jsonPost.addProperty("user_id", GlobalVariable.getUserId(getApplicationContext()));
+        jsonPost.addProperty("item_id", GlobalVariable.getTempItemId(getApplicationContext()));
+
         showLoading();
+        Call<BHBuy> call = apiServiceBH.Buy(jsonPost);
+        call.enqueue(new Callback<BHBuy>() {
+            @Override
+            public void onResponse(Call<BHBuy> call, Response<BHBuy> response) {
+                dismissLoading();
+                BHBuy apiResponse = response.body();
+                if (!apiResponse.isError()){
+                    cartId = apiResponse.data.cart_id;
+                    for (String kurir : apiResponse.data.courier){
+                        adapterCourier.add(kurir);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BHBuy> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    private void GetProvince() {
+//        showLoading();
         Call<BLProvince> call = apiServiceBL.GetProvince();
         call.enqueue(new Callback<BLProvince>() {
             @Override
             public void onResponse(Call<BLProvince> call, Response<BLProvince> response) {
-                dismissLoading();
+//                dismissLoading();
                 if (response.body().status.equals("OK")) {
                     for (int i = 0; i < response.body().provinces.length; i++) {
                         arrayProvince.add(response.body().provinces[i]);
@@ -180,6 +217,7 @@ public class PaymentActivity extends BaseActivity {
                     actCity.setThreshold(1);
 
                     actCity.setText(arrayCity.get(0));
+                    city = arrayCity.get(0);
                 }
             }
 
@@ -224,6 +262,17 @@ public class PaymentActivity extends BaseActivity {
                     JsonObject paymentInvoice = new JsonObject();
                     JsonObject address = new JsonObject();
                     JsonArray transactionAtribute = new JsonArray();
+                    JsonObject transaction = new JsonObject();
+                    JsonArray itemIds = new JsonArray();
+
+                    itemIds.add(1);
+                    itemIds.add(2);
+
+                    transaction.addProperty("seller_id", product.seller_id);
+                    transaction.addProperty("courier", kurir);
+                    transaction.addProperty("buyer_notes", "");
+
+                    transactionAtribute.add(transaction);
 
                     address.addProperty("province", province);
                     address.addProperty("city", city);
@@ -232,17 +281,46 @@ public class PaymentActivity extends BaseActivity {
                     address.addProperty("post_code", postCode);
 
                     paymentInvoice.addProperty("shipping_name", name);
-                    paymentInvoice.addProperty("deposit_reduction_amount", price);
+                    paymentInvoice.addProperty("phone", phone);
+//                    paymentInvoice.addProperty("deposit_reduction_amount", price);
                     paymentInvoice.add("address", address);
+                    paymentInvoice.add("transactions_attributes", transactionAtribute);
 
                     jsonPost = new JsonObject();
                     jsonPost.add("payment_invoice", paymentInvoice);
                     jsonPost.addProperty("payment_method", payment);
                     jsonPost.addProperty("cart_id", cartId);
 
+                    AppUtility.logD("JsonPost", "JsonPost : " + jsonPost.toString());
+//                    CreateInvoice();
+
                 }
 
                 break;
         }
     }
+
+    private void CreateInvoice(){
+        showLoading();
+        Call<ModelBase> call = apiServiceBH.CreateInvoice(jsonPost, cartId,
+                GlobalVariable.getUserId(getApplicationContext()),
+                GlobalVariable.getBukalapakToken(getApplicationContext()));
+
+        call.enqueue(new Callback<ModelBase>() {
+            @Override
+            public void onResponse(Call<ModelBase> call, Response<ModelBase> response) {
+                dismissLoading();
+                if (!response.body().isError()){
+                    Toast.makeText(PaymentActivity.this, response.body().getAlerts().message, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ModelBase> call, Throwable t) {
+
+            }
+        });
+
+    }
+
 }

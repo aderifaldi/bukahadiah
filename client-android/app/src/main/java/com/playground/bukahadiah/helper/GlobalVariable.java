@@ -29,6 +29,7 @@ public class GlobalVariable {
     private static final String USER_PROFILE_IMAGE = "userProfileImage";
     private static final String TEMP_FRIEND_FCM_TOKEN = "tempFriendFCMToken";
     private static final String TEMP_FRIEND_ID = "tempFriendId";
+    private static final String TEMP_ITEM_ID = "tempFriendId";
 
     public static final int REQUEST_CAMERA_FOR_TAKE_PHOTO = 4;
     public static final int REQUEST_GALERY = 5;
@@ -57,6 +58,20 @@ public class GlobalVariable {
     public static int getTempEventId(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(GlobalVariable.PREF_NAME, Context.MODE_PRIVATE);
         int data = sharedPreferences.getInt(TEMP_EVENT_ID, 0);
+
+        return data;
+    }
+
+    public static void saveTempItemId(Context context, int data) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(GlobalVariable.PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(TEMP_ITEM_ID, data);
+        editor.apply();
+    }
+
+    public static int getTempItemId(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(GlobalVariable.PREF_NAME, Context.MODE_PRIVATE);
+        int data = sharedPreferences.getInt(TEMP_ITEM_ID, 0);
 
         return data;
     }

@@ -2,6 +2,7 @@ package com.playground.bukahadiah.api;
 
 import com.google.gson.JsonObject;
 import com.playground.bukahadiah.model.bukahadiah.BHActivity;
+import com.playground.bukahadiah.model.bukahadiah.BHBuy;
 import com.playground.bukahadiah.model.bukahadiah.BHEvent;
 import com.playground.bukahadiah.model.bukahadiah.BHEventDetail;
 import com.playground.bukahadiah.model.bukahadiah.BHGift;
@@ -47,10 +48,23 @@ public interface ApiServiceBH {
     String GET_NOTIFICATION = "Notification/get/{user_id}";
     String MEMBER_FOLLOW = "Friendship";
     String GIFTBOX_BY_USER = "giftboxes/{user_id}/get";
+    String BUY = "purchase/buy";
+    String CREATE_INVOICE = "purchase/invoice/{cart_id}/{user_id}/{token}";
 
     @Headers("Content-Type: application/json")
     @POST(GIFTBOX)
     Call<BHGift> CreateGiftBox(@Body JsonObject jsonPost);
+
+    @Headers("Content-Type: application/json")
+    @POST(CREATE_INVOICE)
+    Call<ModelBase> CreateInvoice(@Body JsonObject jsonPost,
+                                  @Path("cart_id") int cart_id,
+                                  @Path("user_id") int user_id,
+                                  @Path("token") String token);
+
+    @Headers("Content-Type: application/json")
+    @POST(BUY)
+    Call<BHBuy> Buy(@Body JsonObject jsonPost);
 
     @Headers("Content-Type: application/json")
     @POST(MEMBER_FOLLOW)

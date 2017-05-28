@@ -84,6 +84,9 @@ public class EventDetailActivity extends BaseActivity {
         adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                GlobalVariable.saveTempItemId(getApplicationContext(), adapter.getData().get(position).item_id);
+
                 startActivity(new Intent(getApplicationContext(), DetailProductActivity.class)
                         .putExtra("productId", adapter.getData().get(position).item_blid)
                         .putExtra("isFromWishList", false)
