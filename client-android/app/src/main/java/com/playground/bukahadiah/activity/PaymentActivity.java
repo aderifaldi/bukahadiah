@@ -19,6 +19,7 @@ import com.playground.bukahadiah.customui.textview.CustomTextView;
 import com.playground.bukahadiah.helper.GlobalVariable;
 import com.playground.bukahadiah.model.bukahadiah.BHBuy;
 import com.playground.bukahadiah.model.bukahadiah.BHInvoice;
+import com.playground.bukahadiah.model.bukahadiah.BHInvoiceDetail;
 import com.playground.bukahadiah.model.bukahadiah.ModelBase;
 import com.playground.bukahadiah.model.bukalapak.BLCities;
 import com.playground.bukahadiah.model.bukalapak.BLProduct;
@@ -305,16 +306,16 @@ public class PaymentActivity extends BaseActivity {
 
     private void CreateInvoice(){
         showLoading();
-        Call<BHInvoice> call = apiServiceBH.CreateInvoice(jsonPost, cartId,
+        Call<BHInvoiceDetail> call = apiServiceBH.CreateInvoice(jsonPost, cartId,
                 GlobalVariable.getUserId(getApplicationContext()),
                 GlobalVariable.getBukalapakToken(getApplicationContext()));
 
-        call.enqueue(new Callback<BHInvoice>() {
+        call.enqueue(new Callback<BHInvoiceDetail>() {
             @Override
-            public void onResponse(Call<BHInvoice> call, Response<BHInvoice> response) {
+            public void onResponse(Call<BHInvoiceDetail> call, Response<BHInvoiceDetail> response) {
                 dismissLoading();
                 if (!response.body().isError()){
-                    BHInvoice.InvoiceData invoice = response.body().data;
+                    BHInvoiceDetail.InvoiceData invoice = response.body().data;
                     if (invoice != null){
                         startActivity(new Intent(getApplicationContext(), InvoiceDetailActivity.class)
                                 .putExtra("invoice", invoice));
@@ -323,7 +324,7 @@ public class PaymentActivity extends BaseActivity {
             }
 
             @Override
-            public void onFailure(Call<BHInvoice> call, Throwable t) {
+            public void onFailure(Call<BHInvoiceDetail> call, Throwable t) {
 
             }
         });

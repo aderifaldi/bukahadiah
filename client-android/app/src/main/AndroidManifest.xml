@@ -75,7 +75,9 @@
         <activity
             android:name=".activity.PaymentActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.InvoiceDetailActivity"></activity>
+        <activity android:name=".activity.InvoiceDetailActivity" />
+        <activity android:name=".activity.MyInvoiceActivity" />
+        <activity android:name=".activity.MyInvoiceDetailActivity" />
     </application>
 
 </manifest>

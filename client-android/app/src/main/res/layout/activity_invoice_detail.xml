@@ -386,6 +386,29 @@
                     custom:font="@string/regular" />
             </LinearLayout>
 
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:layout_marginTop="@dimen/paddingBig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/fontNormal"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Shipping Address"
+                android:textColor="@color/colorPrimaryFont"
+                custom:font="@string/regular" />
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:id="@+id/shippingAddress"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:textSize="@dimen/fontNormal"
+                android:text="Shipping Address"
+                android:textColor="@color/colorPrimaryFont"
+                custom:font="@string/light" />
+
         </LinearLayout>
     </ScrollView>
 

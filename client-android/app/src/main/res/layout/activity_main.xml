@@ -22,21 +22,40 @@
             android:layout_centerInParent="true"
             custom:font="@string/regular"/>
 
-        <RelativeLayout
-            android:visibility="gone"
-            android:id="@+id/menuTop"
-            android:layout_width="@dimen/toolbarSize"
-            android:layout_height="@dimen/toolbarSize"
-            android:clickable="true"
-            android:background="@drawable/bg_noticifaction_selector"
-            android:layout_alignParentRight="true">
-            <ImageView
-                android:id="@+id/btnMenuTop"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:src="@drawable/notification"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:id="@+id/menuInvoice"
+                android:layout_width="@dimen/toolbarSize"
+                android:layout_height="@dimen/toolbarSize"
+                android:clickable="true"
+                android:background="@drawable/bg_noticifaction_selector"
+                android:layout_alignParentRight="true">
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_invoice"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/menuTop"
+                android:layout_width="@dimen/toolbarSize"
+                android:layout_height="@dimen/toolbarSize"
+                android:clickable="true"
+                android:background="@drawable/bg_noticifaction_selector"
+                android:layout_alignParentRight="true">
+                <ImageView
+                    android:id="@+id/btnMenuTop"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/notification"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+        </LinearLayout>
 
     </RelativeLayout>
 

@@ -6,6 +6,7 @@ import android.widget.RelativeLayout;
 import com.playground.bukahadiah.R;
 import com.playground.bukahadiah.customui.textview.CustomTextView;
 import com.playground.bukahadiah.model.bukahadiah.BHInvoice;
+import com.playground.bukahadiah.model.bukahadiah.BHInvoiceDetail;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -43,8 +44,10 @@ public class InvoiceDetailActivity extends BaseActivity {
     CustomTextView amoundCode;
     @BindView(R.id.totalPayment)
     CustomTextView totalPayment;
+    @BindView(R.id.shippingAddress)
+    CustomTextView shippingAddress;
 
-    private BHInvoice.InvoiceData invoice;
+    private BHInvoiceDetail.InvoiceData invoice;
     private SimpleDateFormat sdf;
     private DecimalFormat decimalFormat;
     private DecimalFormatSymbols symbols;
@@ -55,25 +58,32 @@ public class InvoiceDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_invoice_detail);
         ButterKnife.bind(this);
 
+        pageTitle.setText("Order Success");
+
         symbols = new DecimalFormatSymbols();
         symbols.setDecimalSeparator(',');
         decimalFormat = new DecimalFormat("###,###,###,###", symbols);
 
         sdf = new SimpleDateFormat("EEEE dd MMMM yyyy HH:mm");
 
-        invoice = (BHInvoice.InvoiceData) getIntent().getExtras().getSerializable("invoice");
+        invoice = (BHInvoiceDetail.InvoiceData) getIntent().getExtras().getSerializable("invoice");
 
         idTagihan.setText("Payment Charge " + invoice.invoice.invoice_id);
-        userName.setText("Hi " + invoice.buyer.name + ",");
+        userName.setText("Hi " + invoice.invoice.buyer.name + ",");
         dueDate.setText(sdf.format(invoice.invoice.pay_before));
-        totalAmount.setText("Rp. " + decimalFormat.format(invoice.invoice.total_amount));
-        transactionDate.setText(sdf.format(invoice.invoice.payment_chosen_at));
-        buyer.setText(invoice.buyer.name);
-        sellerName.setText(invoice.transactions[0].seller.name);
-        productName.setText(invoice.transactions[0].products[0].name);
+        totalAmount.setText("Rp. " + decimalFormat.format(invoice.invoice.coded_amount));
+        transactionDate.setText(sdf.format(invoice.invoice.created_at));
+        buyer.setText(invoice.invoice.buyer.name);
+        sellerName.setText(invoice.invoice.transactions[0].seller.name);
+        productName.setText(invoice.invoice.transactions[0].products[0].name);
         amountTotal.setText("Rp. " + decimalFormat.format(invoice.invoice.total_amount));
-        amoundCode.setText("" + invoice.invoice.coded_amount);
-        totalPayment.setText("Rp. " + decimalFormat.format(invoice.invoice.total_amount));
+        amoundCode.setText("" + invoice.invoice.uniq_code);
+        totalPayment.setText("Rp. " + decimalFormat.format(invoice.invoice.coded_amount));
+        shippingAddress.setText(invoice.invoice.consignee.name + "\n" +
+                invoice.invoice.consignee.address + "\n" +
+                invoice.invoice.consignee.area + ", " + invoice.invoice.consignee.city
+                + "\n" + invoice.invoice.consignee.province + " - " +
+                invoice.invoice.consignee.post_code + "\n" + invoice.invoice.consignee.phone);
 
     }
 

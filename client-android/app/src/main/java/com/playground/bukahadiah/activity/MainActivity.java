@@ -52,6 +52,8 @@ public class MainActivity extends BaseActivity {
     RelativeLayout menuTop;
     @BindView(R.id.pageTitle)
     CustomTextView pageTitle;
+    @BindView(R.id.menuInvoice)
+    RelativeLayout menuInvoice;
 
     private HomePagerAdapter homePagerAdapter;
 
@@ -109,23 +111,28 @@ public class MainActivity extends BaseActivity {
             case R.id.menuHome:
                 menuHomeSelected();
                 body.setCurrentItem(0);
+                menuInvoice.setVisibility(View.VISIBLE);
                 break;
             case R.id.menuHeart:
                 menuHeartSelected();
                 body.setCurrentItem(1);
+                menuInvoice.setVisibility(View.GONE);
                 break;
             case R.id.bgBtnAdd:
                 startActivity(new Intent(getApplicationContext(), AddPostActivity.class));
                 menuHomeSelected();
                 body.setCurrentItem(0);
+                menuInvoice.setVisibility(View.VISIBLE);
                 break;
             case R.id.menuSearch:
                 menuSearchSelected();
                 body.setCurrentItem(3);
+                menuInvoice.setVisibility(View.GONE);
                 break;
             case R.id.menuUser:
                 menuUserSelected();
                 body.setCurrentItem(4);
+                menuInvoice.setVisibility(View.GONE);
                 break;
         }
     }
@@ -266,6 +273,12 @@ public class MainActivity extends BaseActivity {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
         backAnimation();
         finish();
+    }
+
+    @OnClick(R.id.menuInvoice)
+    protected void menuInvoice(){
+        startActivity(new Intent(getApplicationContext(), MyInvoiceActivity.class));
+        goToAnimation();
     }
 
     @OnClick(R.id.menuTop)

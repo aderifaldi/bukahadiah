@@ -8,6 +8,8 @@ import com.playground.bukahadiah.model.bukahadiah.BHEventDetail;
 import com.playground.bukahadiah.model.bukahadiah.BHGift;
 import com.playground.bukahadiah.model.bukahadiah.BHGiftItem;
 import com.playground.bukahadiah.model.bukahadiah.BHInvoice;
+import com.playground.bukahadiah.model.bukahadiah.BHInvoiceDetail;
+import com.playground.bukahadiah.model.bukahadiah.BHInvoiceList;
 import com.playground.bukahadiah.model.bukahadiah.BHMemberList;
 import com.playground.bukahadiah.model.bukahadiah.BHNotification;
 import com.playground.bukahadiah.model.bukahadiah.BHUser;
@@ -51,6 +53,8 @@ public interface ApiServiceBH {
     String GIFTBOX_BY_USER = "giftboxes/{user_id}/get";
     String BUY = "purchase/buy";
     String CREATE_INVOICE = "purchase/invoice/{cart_id}/{user_id}/{token}";
+    String GET_INVOICE = "purchase/get/invoice/{user_id}";
+    String GET_INVOICE_DETAIL = "purchase/detail/invoice/{invoice_id}/{user_id}/{token}";
 
     @Headers("Content-Type: application/json")
     @POST(GIFTBOX)
@@ -58,10 +62,15 @@ public interface ApiServiceBH {
 
     @Headers("Content-Type: application/json")
     @POST(CREATE_INVOICE)
-    Call<BHInvoice> CreateInvoice(@Body JsonObject jsonPost,
+    Call<BHInvoiceDetail> CreateInvoice(@Body JsonObject jsonPost,
                                   @Path("cart_id") int cart_id,
                                   @Path("user_id") int user_id,
                                   @Path("token") String token);
+
+    @GET(GET_INVOICE_DETAIL)
+    Call<BHInvoiceDetail> GetInvoiceDetail(@Path("invoice_id") String invoice_id,
+                                           @Path("user_id") int user_id,
+                                           @Path("token") String token);
 
     @Headers("Content-Type: application/json")
     @POST(BUY)
@@ -96,6 +105,9 @@ public interface ApiServiceBH {
 
     @GET(GET_NOTIFICATION)
     Call<BHNotification> GetNotification(@Path("user_id") int user_id);
+
+    @GET(GET_INVOICE)
+    Call<BHInvoiceList> GetInvoice(@Path("user_id") int user_id);
 
     @GET(ACTIVITY)
     Call<BHActivity> GetActivity(@Path("user_blid") int user_blid);

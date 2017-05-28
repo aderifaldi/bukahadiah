@@ -5,14 +5,14 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@id/containerItem"
+        android:id="@+id/containerItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/paddingNormal"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/giftImage"
+            android:id="@+id/producImage"
             android:layout_width="@dimen/giftItemImageSize"
             android:layout_height="@dimen/giftItemImageSize"
             android:scaleType="centerCrop"/>
@@ -24,17 +24,16 @@
             android:orientation="vertical">
 
             <com.playground.bukahadiah.customui.textview.CustomTextView
-                android:id="@+id/productName"
+                android:id="@+id/invoiceCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryFont"
                 android:textSize="@dimen/fontNormal"
                 android:text=""
-                android:maxLines="2"
                 custom:font="@string/regular"/>
 
             <com.playground.bukahadiah.customui.textview.CustomTextView
-                android:id="@+id/productDesc"
+                android:id="@+id/productName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryFont"
@@ -43,8 +42,30 @@
                 android:maxLines="2"
                 custom:font="@string/light"/>
 
-        </LinearLayout>
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryFont"
+                android:textSize="@dimen/fontMedium"
+                android:text=""
+                android:maxLines="2"
+                custom:font="@string/light"/>
 
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:id="@+id/status"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/fontSmall"
+                android:text=""
+                android:maxLines="2"
+                android:padding="4dp"
+                android:background="@color/colorPrimary"
+                custom:font="@string/regular"/>
+
+        </LinearLayout>
     </LinearLayout>
 
     <View
