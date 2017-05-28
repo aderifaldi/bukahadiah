@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context="com.playground.bukahadiah.activity.InvoiceDetailActivity">
+
+    <include
+        layout="@layout/appbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/paddingNormal"
+            android:orientation="vertical">
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:id="@+id/idTagihan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/colorPrimaryFont"
+                android:textSize="@dimen/fontBig"
+                custom:font="@string/bold" />
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:id="@+id/userName"
+                android:layout_marginTop="@dimen/paddingNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/fontNormal"
+                android:text=""
+                android:textColor="@color/colorPrimaryFont"
+                custom:font="@string/light" />
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/fontNormal"
+                android:text="Thank you for your trust in shopping at Bukalapak.com. Please make payment immediately before:"
+                android:textColor="@color/colorPrimaryFont"
+                custom:font="@string/light" />
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:id="@+id/dueDate"
+                android:layout_marginTop="@dimen/paddingNormal"
+                android:padding="@dimen/paddingNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/colorPrimaryFont"
+                android:textSize="@dimen/fontNormal"
+                android:background="@color/colorGrey"
+                custom:font="@string/bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/paddingNormal"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal">
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text="Make a payment of:"
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/totalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontBig"
+                    android:padding="@dimen/paddingSmall"
+                    android:text=""
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal">
+                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/fontNormal"
+                        android:text="RIGHT "
+                        android:textColor="@color/colorPrimaryFont"
+                        custom:font="@string/regular" />
+
+                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/fontNormal"
+                        android:text="until last "
+                        android:textColor="@color/colorPrimaryFont"
+                        custom:font="@string/light" />
+
+                    <com.playground.bukahadiah.customui.textview.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/fontNormal"
+                        android:text="3 digits"
+                        android:textColor="@color/colorPrimaryFont"
+                        custom:font="@string/bold" />
+                </LinearLayout>
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:gravity="center"
+                    android:text="The difference in transfer value will hinder the verification process"
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rekening_bukalapak"/>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/paddingNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text="Transaction Date "
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=":  "
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/transactionDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=""
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text="Buyer "
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=":  "
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/buyer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=""
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text="Payment Method "
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=":  "
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text="ATM Transfer"
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:paddingTop="@dimen/paddingNormal"
+                android:layout_marginTop="@dimen/paddingNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text="Seller"
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=":  "
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/sellerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=""
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text="Product Name"
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=":  "
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/productName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=""
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/regular" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:paddingTop="@dimen/paddingNormal"
+                android:layout_marginTop="@dimen/paddingNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text="Total Amount"
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=":  "
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/amountTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=""
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/regular" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text="Amount Code"
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=":  "
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/amoundCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=""
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/regular" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text="Total Payment"
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:text=":  "
+                    android:textColor="@color/colorPrimaryFont"
+                    custom:font="@string/light" />
+
+                <com.playground.bukahadiah.customui.textview.CustomTextView
+                    android:id="@+id/totalPayment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/fontNormal"
+                    android:background="@color/colorPrimary"
+                    android:padding="8dp"
+                    android:text=""
+                    android:textColor="@color/colorWhite"
+                    custom:font="@string/regular" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

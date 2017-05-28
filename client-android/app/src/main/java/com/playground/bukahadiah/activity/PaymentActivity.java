@@ -1,5 +1,6 @@
 package com.playground.bukahadiah.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.playground.bukahadiah.R;
 import com.playground.bukahadiah.customui.textview.CustomTextView;
 import com.playground.bukahadiah.helper.GlobalVariable;
 import com.playground.bukahadiah.model.bukahadiah.BHBuy;
+import com.playground.bukahadiah.model.bukahadiah.BHInvoice;
 import com.playground.bukahadiah.model.bukahadiah.ModelBase;
 import com.playground.bukahadiah.model.bukalapak.BLCities;
 import com.playground.bukahadiah.model.bukalapak.BLProduct;
@@ -80,7 +82,7 @@ public class PaymentActivity extends BaseActivity {
     private String province, city, name, phone, area, userAddress, postCode, payment, kurir;
     private long price;
     private BLProduct.Product product;
-    private int cartId, wishItemId;
+    private int cartId, cartIdBukalapak, wishItemId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,7 +163,8 @@ public class PaymentActivity extends BaseActivity {
                 dismissLoading();
                 BHBuy apiResponse = response.body();
                 if (!apiResponse.isError()){
-                    cartId = apiResponse.data.cart_id;
+                    cartId = apiResponse.data.bukahadiah_cart_id;
+                    cartIdBukalapak = apiResponse.data.cart_id;;
                     for (String kurir : apiResponse.data.courier){
                         adapterCourier.add(kurir);
                     }
@@ -289,10 +292,10 @@ public class PaymentActivity extends BaseActivity {
                     jsonPost = new JsonObject();
                     jsonPost.add("payment_invoice", paymentInvoice);
                     jsonPost.addProperty("payment_method", payment);
-                    jsonPost.addProperty("cart_id", cartId);
+                    jsonPost.addProperty("cart_id", cartIdBukalapak);
 
                     AppUtility.logD("JsonPost", "JsonPost : " + jsonPost.toString());
-//                    CreateInvoice();
+                    CreateInvoice();
 
                 }
 
@@ -302,21 +305,25 @@ public class PaymentActivity extends BaseActivity {
 
     private void CreateInvoice(){
         showLoading();
-        Call<ModelBase> call = apiServiceBH.CreateInvoice(jsonPost, cartId,
+        Call<BHInvoice> call = apiServiceBH.CreateInvoice(jsonPost, cartId,
                 GlobalVariable.getUserId(getApplicationContext()),
                 GlobalVariable.getBukalapakToken(getApplicationContext()));
 
-        call.enqueue(new Callback<ModelBase>() {
+        call.enqueue(new Callback<BHInvoice>() {
             @Override
-            public void onResponse(Call<ModelBase> call, Response<ModelBase> response) {
+            public void onResponse(Call<BHInvoice> call, Response<BHInvoice> response) {
                 dismissLoading();
                 if (!response.body().isError()){
-                    Toast.makeText(PaymentActivity.this, response.body().getAlerts().message, Toast.LENGTH_SHORT).show();
+                    BHInvoice.InvoiceData invoice = response.body().data;
+                    if (invoice != null){
+                        startActivity(new Intent(getApplicationContext(), InvoiceDetailActivity.class)
+                                .putExtra("invoice", invoice));
+                    }
                 }
             }
 
             @Override
-            public void onFailure(Call<ModelBase> call, Throwable t) {
+            public void onFailure(Call<BHInvoice> call, Throwable t) {
 
             }
         });

@@ -72,8 +72,10 @@
         <activity
             android:name=".activity.AddPostActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.PaymentActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.PaymentActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.InvoiceDetailActivity"></activity>
     </application>
 
 </manifest>

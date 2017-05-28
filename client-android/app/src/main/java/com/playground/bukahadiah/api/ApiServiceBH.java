@@ -7,6 +7,7 @@ import com.playground.bukahadiah.model.bukahadiah.BHEvent;
 import com.playground.bukahadiah.model.bukahadiah.BHEventDetail;
 import com.playground.bukahadiah.model.bukahadiah.BHGift;
 import com.playground.bukahadiah.model.bukahadiah.BHGiftItem;
+import com.playground.bukahadiah.model.bukahadiah.BHInvoice;
 import com.playground.bukahadiah.model.bukahadiah.BHMemberList;
 import com.playground.bukahadiah.model.bukahadiah.BHNotification;
 import com.playground.bukahadiah.model.bukahadiah.BHUser;
@@ -57,7 +58,7 @@ public interface ApiServiceBH {
 
     @Headers("Content-Type: application/json")
     @POST(CREATE_INVOICE)
-    Call<ModelBase> CreateInvoice(@Body JsonObject jsonPost,
+    Call<BHInvoice> CreateInvoice(@Body JsonObject jsonPost,
                                   @Path("cart_id") int cart_id,
                                   @Path("user_id") int user_id,
                                   @Path("token") String token);
