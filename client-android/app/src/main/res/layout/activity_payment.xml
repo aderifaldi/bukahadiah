@@ -29,37 +29,220 @@
 
     </RelativeLayout>
 
-    <com.playground.bukahadiah.customui.textview.CustomTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Shipping Address:"
-        android:padding="@dimen/paddingNormal"
-        android:textSize="@dimen/fontNormal"
-        android:textColor="@color/colorPrimaryFont"
-        android:layout_centerInParent="true"
-        custom:font="@string/regular"/>
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/paddingNormal"
-        android:paddingRight="@dimen/paddingNormal">
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/tilProvince"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <AutoCompleteTextView
-                android:id="@+id/actProvince"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/paddingExtraBig"
+            android:paddingRight="@dimen/paddingExtraBig"
+            android:orientation="vertical">
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recipent Info:"
+                android:paddingTop="@dimen/paddingNormal"
+                android:paddingBottom="@dimen/paddingSmall"
+                android:textSize="@dimen/fontMedium"
+                android:textColor="@color/colorPrimaryFont"
+                android:layout_centerInParent="true"
+                custom:font="@string/regular"/>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Province"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="@dimen/fontNormal" />
-        </android.support.design.widget.TextInputLayout>
-    </LinearLayout>
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <AutoCompleteTextView
+                        android:id="@+id/actName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Name"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorAccent"
+                        android:textSize="@dimen/fontMedium" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilPhoneNumber"
+                    android:layout_marginTop="@dimen/paddingSmall"
+                    android:layout_marginBottom="@dimen/paddingNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <AutoCompleteTextView
+                        android:id="@+id/actPhoneNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Phone Number"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorAccent"
+                        android:textSize="@dimen/fontMedium" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shipping Address:"
+                android:paddingTop="@dimen/paddingNormal"
+                android:paddingBottom="@dimen/paddingSmall"
+                android:textSize="@dimen/fontMedium"
+                android:textColor="@color/colorPrimaryFont"
+                android:layout_centerInParent="true"
+                custom:font="@string/regular"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilProvince"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <AutoCompleteTextView
+                        android:id="@+id/actProvince"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Province"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorAccent"
+                        android:textSize="@dimen/fontMedium" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilCity"
+                    android:layout_marginTop="@dimen/paddingSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <AutoCompleteTextView
+                        android:id="@+id/actCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="City"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorAccent"
+                        android:textSize="@dimen/fontMedium" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilArea"
+                    android:layout_marginTop="@dimen/paddingSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/actArea"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Area"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorAccent"
+                        android:textSize="@dimen/fontMedium" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilAddress"
+                    android:layout_marginTop="@dimen/paddingSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <AutoCompleteTextView
+                        android:id="@+id/actAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:hint="Address"
+                        android:gravity="left|top"
+                        android:imeOptions="actionNext"
+                        android:inputType="textMultiLine"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorAccent"
+                        android:textSize="@dimen/fontMedium" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilPostalCode"
+                    android:layout_marginTop="@dimen/paddingSmall"
+                    android:layout_marginBottom="@dimen/paddingNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <AutoCompleteTextView
+                        android:id="@+id/actPostalCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Postal Code"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorAccent"
+                        android:textSize="@dimen/fontMedium" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Method:"
+                android:paddingTop="@dimen/paddingNormal"
+                android:paddingBottom="@dimen/paddingSmall"
+                android:textSize="@dimen/fontMedium"
+                android:textColor="@color/colorPrimaryFont"
+                android:layout_centerInParent="true"
+                custom:font="@string/regular"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/paddingNormal">
+
+                <Spinner
+                    android:id="@+id/paymentMethod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <com.playground.bukahadiah.customui.textview.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Courier:"
+                android:paddingTop="@dimen/paddingNormal"
+                android:paddingBottom="@dimen/paddingSmall"
+                android:textSize="@dimen/fontMedium"
+                android:textColor="@color/colorPrimaryFont"
+                android:layout_centerInParent="true"
+                custom:font="@string/regular"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/paddingExtraBig">
+
+                <Spinner
+                    android:id="@+id/courier"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

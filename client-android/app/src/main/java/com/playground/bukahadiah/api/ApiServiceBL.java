@@ -3,6 +3,7 @@ package com.playground.bukahadiah.api;
 import com.google.gson.JsonObject;
 import com.playground.bukahadiah.model.Notification;
 import com.playground.bukahadiah.model.bukalapak.BLAuthentication;
+import com.playground.bukahadiah.model.bukalapak.BLCities;
 import com.playground.bukahadiah.model.bukalapak.BLProduct;
 import com.playground.bukahadiah.model.bukalapak.BLProductCategory;
 import com.playground.bukahadiah.model.bukalapak.BLProductDetail;
@@ -44,11 +45,8 @@ public interface ApiServiceBL {
     String USER_REGISTER = "users.json";
     String GET_TRANSACTION = "transactions/{id}.json";
     String GET_PROVINCE = "address/provinces.json";
+    String GET_CITIES = "address/cities.json";
 
-    //SEND TRANSFER EVIDENCE
-    @Headers("Content-Type: application/json")
-    @POST(CITY_BY_PROVINCE)
-    Call<Notification> sendNotification(@Body JsonObject jsonPost);
 
     @POST(LOGIN)
     Call<BLAuthentication> Login(@Header("Authorization") String auth);
@@ -84,5 +82,8 @@ public interface ApiServiceBL {
 
     @GET(GET_PROVINCE)
     Call<BLProvince> GetProvince();
+
+    @GET(GET_CITIES)
+    Call<BLCities> GetCities(@Query("province") String province);
 
 }

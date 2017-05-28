@@ -234,7 +234,8 @@ public class DetailProductActivity extends BaseActivity {
                 break;
             case R.id.btnConfirmation:
 
-                startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+                startActivity(new Intent(getApplicationContext(), PaymentActivity.class)
+                        .putExtra("product", productDetail.product));
                 goToAnimation();
 
 //                showLoading();

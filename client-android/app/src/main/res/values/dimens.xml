@@ -12,6 +12,7 @@
     <dimen name="fontSmall">12sp</dimen>
     <dimen name="fontExtraSmall">10dp</dimen>
 
+    <dimen name="paddingExtraBig">64dp</dimen>
     <dimen name="paddingBig">24dp</dimen>
     <dimen name="paddingNormal">16dp</dimen>
     <dimen name="paddingMedium">12dp</dimen>

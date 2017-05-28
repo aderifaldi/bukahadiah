@@ -7,13 +7,13 @@
     android:background="@color/colorWhite">
 
     <com.playground.bukahadiah.customui.textview.CustomTextView
-        android:id="@+id/text1"
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/fontMedium"
         android:layout_centerVertical="true"
         android:text="Ade"
         android:textColor="@color/colorPrimaryFont"
-        custom:font="@string/light"/>
+        custom:font="@string/regular"/>
 
 </RelativeLayout>
